@@ -258,6 +258,46 @@ struct PlyvmhTable : public FlatTable<PlyvmhRecord> {
     }
 };
 
+struct PolydegrRecord{
+        static constexpr std::size_t size = 6;
+        double N_De;
+        double el_m;
+        double el_x;
+        double rdeg;
+        double alpha;
+        double beta;
+        
+        bool operator==(const PolydegrRecord& data) const{
+            return N_De == data.N_De &&
+                   el_m == data.el_m &&
+                   el_x == data.el_x &&
+                   rdeg == data.rdeg &&
+                   alpha == data.alpha &&
+                   beta == data.beta;
+        }
+        
+        template<class Serializer>
+        void serializeOp(Serializer& serializer)
+        {
+            serializer(N_De);
+            serializer(el_m);         
+            serializer(el_x);
+            serializer(rdeg);
+            serializer(alpha);
+            serializer(beta);            
+        }     
+};
+
+struct PolydegrTable: public FlatTable<PolydegrRecord> {
+  using FlatTable< PolydegrRecord >::FlatTable;
+  
+  static PolydegrTable serializeObject()
+  {
+      return PolydegrTable({{0.5, 1.5, 2.0, 1.5e-6, 3.0, 1.0 }});
+  }
+  
+};
+
 struct ShrateRecord {
     static constexpr std::size_t size = 1;
 

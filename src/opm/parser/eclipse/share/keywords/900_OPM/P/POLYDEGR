@@ -1,0 +1,42 @@
+{
+  "name": "POLYDEGR",
+  "sections": [
+    "PROPS"
+  ],
+  "size": {
+    "keyword": "REGDIMS",
+    "item": "NPLMIX"
+  },
+  "items": [
+    {
+      "name": "N_DE",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "EL_M",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "EL_X",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "RDEG",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "ALPHA",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "BETA",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    }
+  ]
+}
