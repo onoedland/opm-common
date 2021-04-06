@@ -11,21 +11,25 @@
     {
       "name": "K_MH",
       "value_type": "DOUBLE",
+      "default": 0.009849479,
       "dimension": "1"
     },
     {
       "name": "A_MH",
       "value_type": "DOUBLE",
+      "default": 0.6,
       "dimension": "1"
     },
     {
       "name": "K1",
       "value_type": "DOUBLE",
+      "default": 0.01,
       "dimension": "1"
     },
     {
       "name": "K2",
       "value_type": "DOUBLE",
+      "default": 0.077,
       "dimension": "1"
     }
   ]

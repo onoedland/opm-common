@@ -288,7 +288,7 @@ struct PlylowshTable : public FlatTable<PlylowshRecord> {
 
     static PlylowshTable serializeObject()
     {
-        return PlylowshTable({{0.009849479, 0.6, 0.01, 0.077}});
+        return PlylowshTable({{1.0, 2.0, 3.0, 4.0}});
     }
 };
 
@@ -327,7 +327,7 @@ struct PolydegrTable: public FlatTable<PolydegrRecord> {
   
   static PolydegrTable serializeObject()
   {
-      return PolydegrTable({{0.5, 1.5, 2.0, 1.5e-6, 3.0, 1.0 }});
+      return PolydegrTable({{1.0, 2.0, 3.0, 4.0, 5.0, 6.0}});
   }
   
 };
@@ -364,7 +364,7 @@ struct PlycarrTable: public FlatTable<PlycarrRecord> {
   
   static PlycarrTable serializeObject()
   {
-      return PlycarrTable({{ 0.063, 0.804, 0.350, 1.0, 1.0 }});
+      return PlycarrTable({{1.0, 2.0, 3.0, 4.0, 5.0}});
   }
   
 };

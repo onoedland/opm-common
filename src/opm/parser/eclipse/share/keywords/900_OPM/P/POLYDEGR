@@ -11,31 +11,37 @@
     {
       "name": "N_DE",
       "value_type": "DOUBLE",
+      "default": 0.5,
       "dimension": "1"
     },
     {
       "name": "EL_M",
       "value_type": "DOUBLE",
+      "default": 1.5,
       "dimension": "1"
     },
     {
       "name": "EL_X",
       "value_type": "DOUBLE",
+      "default": 2.0,
       "dimension": "1"
     },
     {
       "name": "RDEG",
       "value_type": "DOUBLE",
+      "default": 1.5e-6,
       "dimension": "1"
     },
     {
       "name": "ALPHA",
       "value_type": "DOUBLE",
+      "default": 3.0,
       "dimension": "1"
     },
     {
       "name": "BETA",
       "value_type": "DOUBLE",
+      "default": 1.0,
       "dimension": "1"
     }
   ]
