@@ -298,6 +298,43 @@ struct PolydegrTable: public FlatTable<PolydegrRecord> {
   
 };
 
+struct PlycarrRecord{
+        static constexpr std::size_t size = 5;
+        double a_n;
+        double b_n;
+        double lam_a;
+        double lam_b;
+        double x;
+        
+        bool operator==(const PlycarrRecord& data) const{
+            return a_n == data.a_n &&
+                   b_n == data.b_n &&
+                   lam_a == data.lam_a &&
+                   lam_b == data.lam_b &&
+                   x == data.x;
+        }
+        
+        template<class Serializer>
+        void serializeOp(Serializer& serializer)
+        {
+            serializer(a_n);
+            serializer(b_n);         
+            serializer(lam_a);
+            serializer(lam_b);
+            serializer(x);          
+        }      
+};
+
+struct PlycarrTable: public FlatTable<PlycarrRecord> {
+  using FlatTable< PlycarrRecord >::FlatTable;
+  
+  static PlycarrTable serializeObject()
+  {
+      return PlycarrTable({{ 0.063, 0.804, 0.350, 1.0, 1.0 }});
+  }
+  
+};
+
 struct ShrateRecord {
     static constexpr std::size_t size = 1;
 

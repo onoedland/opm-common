@@ -225,6 +225,10 @@ namespace Opm {
         if (deck.hasKeyword<ParserKeywords::POLYDEGR>()) {
             this->m_polydegrTable = PolydegrTable(deck.getKeyword("POLYDEGR"));
         }
+        
+        if (deck.hasKeyword<ParserKeywords::PLYCARR>()) {
+            this->m_plycarrTable = PlycarrTable(deck.getKeyword("PLYCARR"));
+        }
 
         using GC = ParserKeywords::GCOMPIDX;
         if (deck.hasKeyword<GC>())
@@ -243,6 +247,7 @@ namespace Opm {
         m_pvcdoTable = data.m_pvcdoTable;
         m_plyvmhTable = data.m_plyvmhTable;
         m_polydegrTable = data.m_polydegrTable;
+        m_plycarrTable = data.m_plycarrTable;
         m_densityTable = data.m_densityTable;
         m_diffCoeffTable = data.m_diffCoeffTable;
         m_plmixparTable = data.m_plmixparTable;
@@ -295,6 +300,7 @@ namespace Opm {
         result.m_diffCoeffTable = DiffCoeffTable::serializeObject();
         result.m_plyvmhTable = PlyvmhTable::serializeObject();
         result.m_polydegrTable = PolydegrTable::serializeObject();
+        result.m_plycarrTable = PlycarrTable::serializeObject();
         result.m_rockTable = RockTable::serializeObject();
         result.m_plmixparTable = PlmixparTable::serializeObject();
         result.m_shrateTable = ShrateTable::serializeObject();
@@ -1162,6 +1168,10 @@ namespace Opm {
     
     const PolydegrTable& TableManager::getPolydegrTable() const{
         return m_polydegrTable;
+    }
+    
+    const PlycarrTable& TableManager::getPlycarrTable() const{
+        return m_plycarrTable;
     }
 
     const std::map<int, PlymwinjTable>& TableManager::getPlymwinjTables() const {

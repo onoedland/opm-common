@@ -1,0 +1,37 @@
+{
+  "name": "PLYCARR",
+  "sections": [
+    "PROPS"
+  ],
+  "size": {
+    "keyword": "REGDIMS",
+    "item": "NPLMIX"
+  },
+  "items": [
+    {
+      "name": "A_N",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "B_N",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "LAM_A",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "LAM_B",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "X",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    }
+  ]
+}
