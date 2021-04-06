@@ -258,6 +258,40 @@ struct PlyvmhTable : public FlatTable<PlyvmhRecord> {
     }
 };
 
+struct PlylowshRecord {
+    static constexpr std::size_t size = 4;
+
+    double k_mh;
+    double a_mh;
+    double k1;
+    double k2;
+
+    bool operator==(const PlylowshRecord& data) const {
+        return k_mh == data.k_mh &&
+               a_mh == data.a_mh &&
+               k1 == data.k1 &&
+               k2 == data.k2;
+    }
+
+    template<class Serializer>
+    void serializeOp(Serializer& serializer)
+    {
+        serializer(k_mh);
+        serializer(a_mh);
+        serializer(k1);
+        serializer(k2);
+    }
+};
+
+struct PlylowshTable : public FlatTable<PlylowshRecord> {
+    using FlatTable< PlylowshRecord >::FlatTable;
+
+    static PlylowshTable serializeObject()
+    {
+        return PlylowshTable({{0.009849479, 0.6, 0.01, 0.077}});
+    }
+};
+
 struct PolydegrRecord{
         static constexpr std::size_t size = 6;
         double N_De;

@@ -1531,6 +1531,7 @@ template FlatTable< PVTWRecord >::FlatTable( const DeckKeyword& );
 template FlatTable< PVCDORecord >::FlatTable( const DeckKeyword& );
 template FlatTable< ROCKRecord >::FlatTable( const DeckKeyword& );
 template FlatTable< PlyvmhRecord >::FlatTable( const DeckKeyword& );
+template FlatTable< PlylowshRecord >::FlatTable( const DeckKeyword& );
 template FlatTable< PolydegrRecord >::FlatTable( const DeckKeyword& );
 template FlatTable< PlycarrRecord >::FlatTable( const DeckKeyword& );
 template FlatTable< VISCREFRecord >::FlatTable( const DeckKeyword& );

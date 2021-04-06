@@ -1,0 +1,32 @@
+{
+  "name": "PLYLOWSH",
+  "sections": [
+    "PROPS"
+  ],
+  "size": {
+    "keyword": "REGDIMS",
+    "item": "NPLMIX"
+  },
+  "items": [
+    {
+      "name": "K_MH",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "A_MH",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "K1",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    },
+    {
+      "name": "K2",
+      "value_type": "DOUBLE",
+      "dimension": "1"
+    }
+  ]
+}

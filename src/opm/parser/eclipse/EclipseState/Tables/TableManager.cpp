@@ -222,6 +222,10 @@ namespace Opm {
             this->m_plyvmhTable = PlyvmhTable(deck.getKeyword("PLYVMH"));
         }
         
+        if (deck.hasKeyword<ParserKeywords::PLYLOWSH>()) {
+            this->m_plylowshTable = PlylowshTable(deck.getKeyword("PLYLOWSH"));
+        }
+        
         if (deck.hasKeyword<ParserKeywords::POLYDEGR>()) {
             this->m_polydegrTable = PolydegrTable(deck.getKeyword("POLYDEGR"));
         }
@@ -246,6 +250,7 @@ namespace Opm {
         m_pvtwTable = data.m_pvtwTable;
         m_pvcdoTable = data.m_pvcdoTable;
         m_plyvmhTable = data.m_plyvmhTable;
+        m_plylowshTable = data.m_plylowshTable;
         m_polydegrTable = data.m_polydegrTable;
         m_plycarrTable = data.m_plycarrTable;
         m_densityTable = data.m_densityTable;
@@ -299,6 +304,7 @@ namespace Opm {
         result.m_densityTable = DensityTable::serializeObject();
         result.m_diffCoeffTable = DiffCoeffTable::serializeObject();
         result.m_plyvmhTable = PlyvmhTable::serializeObject();
+        result.m_plylowshTable = PlylowshTable::serializeObject();
         result.m_polydegrTable = PolydegrTable::serializeObject();
         result.m_plycarrTable = PlycarrTable::serializeObject();
         result.m_rockTable = RockTable::serializeObject();
@@ -1164,6 +1170,10 @@ namespace Opm {
 
     const PlyvmhTable& TableManager::getPlyvmhTable() const {
         return m_plyvmhTable;
+    }
+    
+    const PlylowshTable& TableManager::getPlylowshTable() const {
+        return m_plylowshTable;
     }
     
     const PolydegrTable& TableManager::getPolydegrTable() const{
