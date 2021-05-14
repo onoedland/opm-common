@@ -1,0 +1,24 @@
+{
+  "name": "PLYMETER",
+  "sections": [
+    "PROPS"
+  ],
+  "size": {
+    "keyword": "REGDIMS",
+    "item": "NPLMIX"
+  },
+  "items": [
+    {
+      "name": "P_ALPHA",
+      "value_type": "DOUBLE",
+      "default": 1.75,
+      "dimension": "1"
+    },
+    {
+      "name": "GAMMA_HF",
+      "value_type": "DOUBLE",
+      "default": 20.0,
+      "dimension": "1"
+    }
+  ]
+}

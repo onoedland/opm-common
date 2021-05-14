@@ -292,7 +292,7 @@ struct PlylowshTable : public FlatTable<PlylowshRecord> {
     }
 };
 
-struct PolydegrRecord{
+struct PlydegrRecord{
         static constexpr std::size_t size = 6;
         double N_De;
         double el_m;
@@ -301,7 +301,7 @@ struct PolydegrRecord{
         double alpha;
         double beta;
         
-        bool operator==(const PolydegrRecord& data) const{
+        bool operator==(const PlydegrRecord& data) const{
             return N_De == data.N_De &&
                    el_m == data.el_m &&
                    el_x == data.el_x &&
@@ -322,17 +322,38 @@ struct PolydegrRecord{
         }     
 };
 
-struct PolydegrTable: public FlatTable<PolydegrRecord> {
-  using FlatTable< PolydegrRecord >::FlatTable;
+struct PlydegrTable: public FlatTable<PlydegrRecord> {
+  using FlatTable< PlydegrRecord >::FlatTable;
   
-  static PolydegrTable serializeObject()
+  static PlydegrTable serializeObject()
   {
-      return PolydegrTable({{1.0, 2.0, 3.0, 4.0, 5.0, 6.0}});
+      return PlydegrTable({{1.0, 2.0, 3.0, 4.0, 5.0, 6.0}});
   }
   
 };
 
+struct PlymeterRecord{
+    
+    static constexpr std::size_t size = 2;
+    double p_alpha;
+    double gamma_hf;
+    
+    bool operator==(const PlymeterRecord& data) const{
+        return p_alpha == data.p_alpha &&
+               gamma_hf == data.gamma_hf;
+    }
+    
+    template<class Serializer>
+    void serializeOp(Serializer& serializer)
+    {
+        serializer(p_alpha);
+        serializer(gamma_hf);
+    }
+    
+};
+
 struct PlycarrRecord{
+    
         static constexpr std::size_t size = 5;
         double a_n;
         double b_n;
@@ -352,11 +373,21 @@ struct PlycarrRecord{
         void serializeOp(Serializer& serializer)
         {
             serializer(a_n);
-            serializer(b_n);         
+            serializer(b_n);
             serializer(lam_a);
             serializer(lam_b);
-            serializer(x);          
+            serializer(x);
         }      
+};
+
+struct PlymeterTable: public FlatTable<PlymeterRecord> {
+  using FlatTable< PlymeterRecord >::FlatTable;
+  
+  static PlymeterTable serializeObject()
+  {
+      return PlymeterTable({{1.0, 2.0}});
+  }
+  
 };
 
 struct PlycarrTable: public FlatTable<PlycarrRecord> {

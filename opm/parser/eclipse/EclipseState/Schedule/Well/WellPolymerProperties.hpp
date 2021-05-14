@@ -31,6 +31,11 @@ namespace Opm {
         int m_plymwinjtable = -1;
         int m_skprwattable = -1;
         int m_skprpolytable = -1;
+        
+        // Extra variables for degradation & shear-thickening...
+        //double m_degr_rate = 0.0;
+        //double m_degr_alpha = 3.0;
+        //double m_degr_beta = 1.0;
 
         static WellPolymerProperties serializeObject();
 

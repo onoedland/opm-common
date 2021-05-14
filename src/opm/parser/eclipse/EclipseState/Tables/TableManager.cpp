@@ -226,8 +226,12 @@ namespace Opm {
             this->m_plylowshTable = PlylowshTable(deck.getKeyword("PLYLOWSH"));
         }
         
-        if (deck.hasKeyword<ParserKeywords::POLYDEGR>()) {
-            this->m_polydegrTable = PolydegrTable(deck.getKeyword("POLYDEGR"));
+        if (deck.hasKeyword<ParserKeywords::PLYDEGR>()) {
+            this->m_plydegrTable = PlydegrTable(deck.getKeyword("PLYDEGR"));
+        }
+        
+        if (deck.hasKeyword<ParserKeywords::PLYMETER>()) {
+            this->m_plymeterTable = PlymeterTable(deck.getKeyword("PLYMETER"));
         }
         
         if (deck.hasKeyword<ParserKeywords::PLYCARR>()) {
@@ -251,7 +255,8 @@ namespace Opm {
         m_pvcdoTable = data.m_pvcdoTable;
         m_plyvmhTable = data.m_plyvmhTable;
         m_plylowshTable = data.m_plylowshTable;
-        m_polydegrTable = data.m_polydegrTable;
+        m_plydegrTable = data.m_plydegrTable;
+        m_plymeterTable = data.m_plymeterTable;
         m_plycarrTable = data.m_plycarrTable;
         m_densityTable = data.m_densityTable;
         m_diffCoeffTable = data.m_diffCoeffTable;
@@ -305,7 +310,8 @@ namespace Opm {
         result.m_diffCoeffTable = DiffCoeffTable::serializeObject();
         result.m_plyvmhTable = PlyvmhTable::serializeObject();
         result.m_plylowshTable = PlylowshTable::serializeObject();
-        result.m_polydegrTable = PolydegrTable::serializeObject();
+        result.m_plydegrTable = PlydegrTable::serializeObject();
+        result.m_plymeterTable = PlymeterTable::serializeObject();
         result.m_plycarrTable = PlycarrTable::serializeObject();
         result.m_rockTable = RockTable::serializeObject();
         result.m_plmixparTable = PlmixparTable::serializeObject();
@@ -1176,8 +1182,12 @@ namespace Opm {
         return m_plylowshTable;
     }
     
-    const PolydegrTable& TableManager::getPolydegrTable() const{
-        return m_polydegrTable;
+    const PlydegrTable& TableManager::getPlydegrTable() const{
+        return m_plydegrTable;
+    }
+    
+    const PlymeterTable& TableManager::getPlymeterTable() const{
+        return m_plymeterTable;
     }
     
     const PlycarrTable& TableManager::getPlycarrTable() const{
