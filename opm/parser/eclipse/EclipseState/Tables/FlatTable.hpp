@@ -259,18 +259,20 @@ struct PlyvmhTable : public FlatTable<PlyvmhRecord> {
 };
 
 struct PlylowshRecord {
-    static constexpr std::size_t size = 4;
+    static constexpr std::size_t size = 5;
 
     double k_mh;
     double a_mh;
     double k1;
     double k2;
+    double model; // 0: cubic equation (default), 1: Martin's equation, 2: Huggins equation
 
     bool operator==(const PlylowshRecord& data) const {
         return k_mh == data.k_mh &&
                a_mh == data.a_mh &&
                k1 == data.k1 &&
-               k2 == data.k2;
+               k2 == data.k2 &&
+               model == data.model;
     }
 
     template<class Serializer>
@@ -280,6 +282,7 @@ struct PlylowshRecord {
         serializer(a_mh);
         serializer(k1);
         serializer(k2);
+        serializer(model);
     }
 };
 
@@ -288,7 +291,7 @@ struct PlylowshTable : public FlatTable<PlylowshRecord> {
 
     static PlylowshTable serializeObject()
     {
-        return PlylowshTable({{1.0, 2.0, 3.0, 4.0}});
+        return PlylowshTable({{1.0, 2.0, 3.0, 4.0, 5.0}});
     }
 };
 
