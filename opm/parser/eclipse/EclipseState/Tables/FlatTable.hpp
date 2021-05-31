@@ -258,6 +258,43 @@ struct PlyvmhTable : public FlatTable<PlyvmhRecord> {
     }
 };
 
+struct PlycarrRecord {
+    static constexpr std::size_t size = 5;
+
+    double a_n;
+    double b_n;
+    double lam_a;
+    double lam_b;
+    double x;
+
+    bool operator==(const PlycarrRecord& data) const {
+        return a_n == data.a_n &&
+               b_n == data.b_n &&
+               lam_a == data.lam_a &&
+               lam_b == data.lam_b &&
+               x == data.x;
+    }
+
+    template<class Serializer>
+    void serializeOp(Serializer& serializer)
+    {
+        serializer(a_n);
+        serializer(b_n);
+        serializer(lam_a);
+        serializer(lam_b);
+        serializer(x);
+    }
+};
+
+struct PlycarrTable : public FlatTable<PlycarrRecord> {
+    using FlatTable< PlycarrRecord >::FlatTable;
+
+    static PlycarrTable serializeObject()
+    {
+        return PlycarrTable({{1.0, 2.0, 3.0, 4.0, 5.0}});
+    }
+};
+
 struct ShrateRecord {
     static constexpr std::size_t size = 1;
 

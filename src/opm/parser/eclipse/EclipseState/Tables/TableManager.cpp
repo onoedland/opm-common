@@ -234,6 +234,10 @@ std::optional<JFunc> make_jfunc(const Deck& deck) {
             this->m_plyvmhTable = PlyvmhTable(deck.getKeyword("PLYVMH"));
         }
 
+        if (deck.hasKeyword<ParserKeywords::PLYCARR>()) {
+            this->m_plycarrTable = PlycarrTable(deck.getKeyword("PLYCARR"));
+        }
+
         using GC = ParserKeywords::GCOMPIDX;
         if (deck.hasKeyword<GC>())
             this->m_gas_comp_index = deck.getKeyword<GC>().getRecord(0).getItem<GC::GAS_COMPONENT_INDEX>().get<int>(0);
@@ -255,6 +259,7 @@ std::optional<JFunc> make_jfunc(const Deck& deck) {
         result.m_densityTable = DensityTable::serializeObject();
         result.m_diffCoeffTable = DiffCoeffTable::serializeObject();
         result.m_plyvmhTable = PlyvmhTable::serializeObject();
+        result.m_plycarrTable = PlycarrTable::serializeObject();
         result.m_rockTable = RockTable::serializeObject();
         result.m_plmixparTable = PlmixparTable::serializeObject();
         result.m_shrateTable = ShrateTable::serializeObject();
@@ -1118,6 +1123,10 @@ std::optional<JFunc> make_jfunc(const Deck& deck) {
 
     const PlyvmhTable& TableManager::getPlyvmhTable() const {
         return m_plyvmhTable;
+    }
+
+    const PlycarrTable& TableManager::getPlycarrTable() const {
+        return m_plycarrTable;
     }
 
     const std::map<int, PlymwinjTable>& TableManager::getPlymwinjTables() const {
