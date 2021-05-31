@@ -67,6 +67,9 @@ install
 # Mac OS X debug info
 *.dSYM
 
+# Other Mac stuff:
+*.DS_Store
+
 # emacs directory setting:
 .dir-locals.el
 
