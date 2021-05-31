@@ -225,18 +225,20 @@ struct PlmixparTable : public FlatTable< PlmixparRecord> {
 };
 
 struct PlyvmhRecord {
-    static constexpr std::size_t size = 4;
+    static constexpr std::size_t size = 5;
 
     double k_mh;
     double a_mh;
-    double gamma;
-    double kappa;
+    double k1;
+    double k2;
+    double model; // TO DO: Should be an integer flag..
 
     bool operator==(const PlyvmhRecord& data) const {
         return k_mh == data.k_mh &&
                a_mh == data.a_mh &&
-               gamma == data.gamma &&
-               kappa == data.kappa;
+               k1 == data.k1 &&
+               k2 == data.k2 &&
+               model == data.model;
     }
 
     template<class Serializer>
@@ -244,8 +246,9 @@ struct PlyvmhRecord {
     {
         serializer(k_mh);
         serializer(a_mh);
-        serializer(gamma);
-        serializer(kappa);
+        serializer(k1);
+        serializer(k2);
+        serializer(model);
     }
 };
 
@@ -254,7 +257,7 @@ struct PlyvmhTable : public FlatTable<PlyvmhRecord> {
 
     static PlyvmhTable serializeObject()
     {
-        return PlyvmhTable({{1.0, 2.0, 3.0, 4.0}});
+        return PlyvmhTable({{1.0, 2.0, 3.0, 4.0, 5.0}});
     }
 };
 
