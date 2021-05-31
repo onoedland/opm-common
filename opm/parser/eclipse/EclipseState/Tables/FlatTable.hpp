@@ -295,6 +295,34 @@ struct PlycarrTable : public FlatTable<PlycarrRecord> {
     }
 };
 
+struct PlymeterRecord {
+    static constexpr std::size_t size = 2;
+
+    double p_alpha;
+    double gamma_hf;
+
+    bool operator==(const PlymeterRecord& data) const {
+        return p_alpha == data.p_alpha &&
+               gamma_hf == data.gamma_hf;
+    }
+
+    template<class Serializer>
+    void serializeOp(Serializer& serializer)
+    {
+        serializer(p_alpha);
+        serializer(gamma_hf);
+    }
+};
+
+struct PlymeterTable : public FlatTable<PlymeterRecord> {
+    using FlatTable< PlymeterRecord >::FlatTable;
+
+    static PlymeterTable serializeObject()
+    {
+        return PlymeterTable({{1.0, 2.0}});
+    }
+};
+
 struct ShrateRecord {
     static constexpr std::size_t size = 1;
 

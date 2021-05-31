@@ -157,6 +157,7 @@ namespace Opm {
         const DiffCoeffTable& getDiffusionCoefficientTable() const;
         const PlyvmhTable& getPlyvmhTable() const;
         const PlycarrTable& getPlycarrTable() const;
+        const PlymeterTable& getPlymeterTable() const;
         const RockTable& getRockTable() const;
         const ViscrefTable& getViscrefTable() const;
         const PlmixparTable& getPlmixparTable() const;
@@ -212,6 +213,7 @@ namespace Opm {
             m_diffCoeffTable.serializeOp(serializer);
             m_plyvmhTable.serializeOp(serializer);
             m_plycarrTable.serializeOp(serializer);
+            m_plymeterTable.serializeOp(serializer);
             m_rockTable.serializeOp(serializer);
             m_plmixparTable.serializeOp(serializer);
             m_shrateTable.serializeOp(serializer);
@@ -352,6 +354,7 @@ namespace Opm {
         DiffCoeffTable m_diffCoeffTable;
         PlyvmhTable m_plyvmhTable;
         PlycarrTable m_plycarrTable;
+        PlymeterTable m_plymeterTable;
         RockTable m_rockTable;
         PlmixparTable m_plmixparTable;
         ShrateTable m_shrateTable;
