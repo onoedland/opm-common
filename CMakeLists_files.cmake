@@ -580,6 +580,7 @@ list( APPEND PUBLIC_HEADER_FILES
       opm/common/utility/numeric/MonotCubicInterpolator.hpp
       opm/common/utility/numeric/NonuniformTableLinear.hpp
       opm/common/utility/numeric/RootFinders.hpp
+      opm/common/utility/numeric/RootFindersEvaluation.hpp
       opm/common/utility/numeric/SparseVector.hpp
       opm/common/utility/numeric/UniformTableLinear.hpp
       opm/common/utility/parameters/ParameterGroup.hpp
