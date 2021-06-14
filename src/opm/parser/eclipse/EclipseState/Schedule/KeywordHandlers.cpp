@@ -1667,6 +1667,23 @@ namespace {
         }
     }
 
+    void Schedule::handleWPOLYMW(const HandlerContext& handlerContext, const ParseContext& parseContext, ErrorGuard& errors) {
+        for (const auto& record : handlerContext.keyword) {
+            const std::string& wellNamePattern = record.getItem("WELL").getTrimmedString(0);
+            const auto well_names = wellNames(wellNamePattern, handlerContext.currentStep);
+            if (well_names.empty())
+                invalidNamePattern(wellNamePattern, handlerContext.currentStep, parseContext, errors, handlerContext.keyword);
+
+            for (const auto& well_name : well_names) {
+                auto well = this->snapshots.back().wells( well_name );
+                auto polymer_properties = std::make_shared<WellPolymerProperties>( well.getPolymerProperties() );
+                polymer_properties->handleWPOLYMW(record);
+                if (well.updatePolymerProperties(polymer_properties))
+                    this->snapshots.back().wells.update( std::move(well));
+            }
+        }
+    }
+
     void Schedule::handleWSALT(const HandlerContext& handlerContext, const ParseContext& parseContext, ErrorGuard& errors) {
         for (const auto& record : handlerContext.keyword) {
             const std::string& wellNamePattern = record.getItem("WELL").getTrimmedString(0);
@@ -2038,6 +2055,7 @@ namespace {
             { "WPIMULT" , &Schedule::handleWPIMULT  },
             { "WPMITAB" , &Schedule::handleWPMITAB  },
             { "WPOLYMER", &Schedule::handleWPOLYMER },
+            { "WPOLYMW", &Schedule::handleWPOLYMW },
             { "WRFT"    , &Schedule::handleWRFT     },
             { "WRFTPLT" , &Schedule::handleWRFTPLT  },
             { "WSALT"   , &Schedule::handleWSALT    },

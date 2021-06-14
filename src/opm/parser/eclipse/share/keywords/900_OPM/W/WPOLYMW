@@ -1,0 +1,16 @@
+{
+  "name": "WPOLYMW",
+  "sections": [
+    "SCHEDULE"
+  ],
+  "items": [
+    {
+      "name": "WELL",
+      "value_type": "STRING"
+    },
+    {
+      "name": "POLYMER_MW",
+      "value_type": "DOUBLE"
+    }
+  ]
+}

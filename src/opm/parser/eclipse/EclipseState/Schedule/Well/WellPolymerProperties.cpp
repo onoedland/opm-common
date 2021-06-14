@@ -31,9 +31,10 @@ namespace Opm {
         WellPolymerProperties result;
         result.m_polymerConcentration = 1.0;
         result.m_saltConcentration = 2.0;
-        result.m_plymwinjtable = 3;
-        result.m_skprwattable = 4;
-        result.m_skprpolytable = 5;
+        result.m_polymerMoleWeight = 3.0;
+        result.m_plymwinjtable = 4;
+        result.m_skprwattable = 5;
+        result.m_skprpolytable = 6;
 
         return result;
     }
@@ -41,6 +42,7 @@ namespace Opm {
     bool WellPolymerProperties::operator==(const WellPolymerProperties& other) const {
         if ((m_polymerConcentration == other.m_polymerConcentration) &&
             (m_saltConcentration == other.m_saltConcentration) &&
+            (m_polymerMoleWeight == other.m_polymerMoleWeight) &&
             (m_plymwinjtable == other.m_plymwinjtable) &&
             (m_skprwattable == other.m_skprwattable) &&
             (m_skprpolytable == other.m_skprpolytable) )
@@ -49,7 +51,6 @@ namespace Opm {
             return false;
 
     }
-
 
     void WellPolymerProperties::handleWPOLYMER(const DeckRecord& record) {
         const auto& group_polymer_item = record.getItem("GROUP_POLYMER_CONCENTRATION");
@@ -63,6 +64,10 @@ namespace Opm {
 
         this->m_polymerConcentration = record.getItem("POLYMER_CONCENTRATION").get<UDAValue>(0).getSI();
         this->m_saltConcentration = record.getItem("SALT_CONCENTRATION").get<UDAValue>(0).getSI();
+    }
+
+    void WellPolymerProperties::handleWPOLYMW(const DeckRecord& record) {
+        this->m_polymerMoleWeight = record.getItem("POLYMER_MW").get<double>(0);
     }
 
     void WellPolymerProperties::handleWPMITAB(const DeckRecord& record) {

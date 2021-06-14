@@ -28,6 +28,7 @@ namespace Opm {
     struct WellPolymerProperties {
         double m_polymerConcentration = 0.0;
         double m_saltConcentration = 0.0;
+        double m_polymerMoleWeight = 0.0;
         int m_plymwinjtable = -1;
         int m_skprwattable = -1;
         int m_skprpolytable = -1;
@@ -37,6 +38,7 @@ namespace Opm {
         bool operator==(const WellPolymerProperties& other) const;
         bool operator!=(const WellPolymerProperties& other) const;
         void handleWPOLYMER(const DeckRecord& record);
+        void handleWPOLYMW(const DeckRecord& record);
         void handleWPMITAB(const DeckRecord& record);
         void handleWSKPTAB(const DeckRecord& record);
 
@@ -45,6 +47,7 @@ namespace Opm {
         {
             serializer(m_polymerConcentration);
             serializer(m_saltConcentration);
+            serializer(m_polymerMoleWeight);
             serializer(m_plymwinjtable);
             serializer(m_skprwattable);
             serializer(m_skprpolytable);

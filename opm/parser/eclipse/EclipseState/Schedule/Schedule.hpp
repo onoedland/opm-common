@@ -628,6 +628,7 @@ namespace Opm
         void handleWPIMULT  (const HandlerContext&, const ParseContext&, ErrorGuard&);
         void handleWPMITAB  (const HandlerContext&, const ParseContext&, ErrorGuard&);
         void handleWPOLYMER (const HandlerContext&, const ParseContext&, ErrorGuard&);
+        void handleWPOLYMW (const HandlerContext&, const ParseContext&, ErrorGuard&);
         void handleWRFT     (const HandlerContext&, const ParseContext&, ErrorGuard&);
         void handleWRFTPLT  (const HandlerContext&, const ParseContext&, ErrorGuard&);
         void handleWSALT    (const HandlerContext&, const ParseContext&, ErrorGuard&);
