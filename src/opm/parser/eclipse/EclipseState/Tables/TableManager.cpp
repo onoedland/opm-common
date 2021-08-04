@@ -1212,6 +1212,8 @@ std::optional<JFunc> make_jfunc(const Deck& deck) {
                m_densityTable == data.m_densityTable &&
                m_diffCoeffTable == data.m_diffCoeffTable &&
                m_plmixparTable == data.m_plmixparTable &&
+               m_plycarrTable == data.m_plycarrTable &&
+               m_plymeterTable == data.m_plymeterTable &&
                m_plyvmhTable == data.m_plyvmhTable &&
                m_shrateTable == data.m_shrateTable &&
                m_stone1exTable == data.m_stone1exTable &&
