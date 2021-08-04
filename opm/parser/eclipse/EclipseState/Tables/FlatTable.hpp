@@ -326,6 +326,48 @@ struct PlymeterTable : public FlatTable<PlymeterRecord> {
     }
 };
 
+struct PlydegrRecord {
+    static constexpr std::size_t size = 7;
+    double N_De;
+    double el_m;
+    double el_x;
+    double rdeg;
+    double alpha;
+    double beta;
+    double model; // TO DO: Should be an integer flag..
+
+    bool operator==(const PlydegrRecord& data) const {
+        return N_De == data.N_De &&
+               el_m == data.el_m &&
+               el_x == data.el_x &&
+               rdeg == data.rdeg &&
+               alpha == data.alpha &&
+               beta == data.beta &&
+               model == data.model;
+    }
+
+    template<class Serializer>
+    void serializeOp(Serializer& serializer)
+    {
+        serializer(N_De);
+        serializer(el_m);
+        serializer(el_x);
+        serializer(rdeg);
+        serializer(alpha);
+        serializer(beta);
+        serializer(model);
+    }
+};
+
+struct PlydegrTable : public FlatTable<PlydegrRecord> {
+    using FlatTable< PlydegrRecord >::FlatTable;
+
+    static PlydegrTable serializeObject()
+    {
+        return PlydegrTable({{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0}});
+    }
+};
+
 struct ShrateRecord {
     static constexpr std::size_t size = 1;
 

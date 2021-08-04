@@ -230,16 +230,20 @@ std::optional<JFunc> make_jfunc(const Deck& deck) {
             hasShrate = true;
         }
 
-        if (deck.hasKeyword<ParserKeywords::PLYVMH>()) {
-            this->m_plyvmhTable = PlyvmhTable(deck.getKeyword("PLYVMH"));
-        }
-
         if (deck.hasKeyword<ParserKeywords::PLYCARR>()) {
             this->m_plycarrTable = PlycarrTable(deck.getKeyword("PLYCARR"));
         }
 
+        if (deck.hasKeyword<ParserKeywords::PLYDEGR>()) {
+            this->m_plydegrTable = PlydegrTable(deck.getKeyword("PLYDEGR"));
+        }
+
         if (deck.hasKeyword<ParserKeywords::PLYMETER>()) {
             this->m_plymeterTable = PlymeterTable(deck.getKeyword("PLYMETER"));
+        }
+
+        if (deck.hasKeyword<ParserKeywords::PLYVMH>()) {
+            this->m_plyvmhTable = PlyvmhTable(deck.getKeyword("PLYVMH"));
         }
 
         using GC = ParserKeywords::GCOMPIDX;
@@ -262,9 +266,10 @@ std::optional<JFunc> make_jfunc(const Deck& deck) {
         result.m_pvcdoTable = PvcdoTable::serializeObject();
         result.m_densityTable = DensityTable::serializeObject();
         result.m_diffCoeffTable = DiffCoeffTable::serializeObject();
-        result.m_plyvmhTable = PlyvmhTable::serializeObject();
         result.m_plycarrTable = PlycarrTable::serializeObject();
+        result.m_plydegrTable = PlydegrTable::serializeObject();
         result.m_plymeterTable = PlymeterTable::serializeObject();
+        result.m_plyvmhTable = PlyvmhTable::serializeObject();
         result.m_rockTable = RockTable::serializeObject();
         result.m_plmixparTable = PlmixparTable::serializeObject();
         result.m_shrateTable = ShrateTable::serializeObject();
@@ -1126,16 +1131,20 @@ std::optional<JFunc> make_jfunc(const Deck& deck) {
         return this->jfunc.value();
     }
 
-    const PlyvmhTable& TableManager::getPlyvmhTable() const {
-        return m_plyvmhTable;
-    }
-
     const PlycarrTable& TableManager::getPlycarrTable() const {
         return m_plycarrTable;
     }
 
+    const PlydegrTable& TableManager::getPlydegrTable() const {
+        return m_plydegrTable;
+    }
+
     const PlymeterTable& TableManager::getPlymeterTable() const {
         return m_plymeterTable;
+    }
+
+    const PlyvmhTable& TableManager::getPlyvmhTable() const {
+        return m_plyvmhTable;
     }
 
     const std::map<int, PlymwinjTable>& TableManager::getPlymwinjTables() const {
@@ -1213,6 +1222,7 @@ std::optional<JFunc> make_jfunc(const Deck& deck) {
                m_diffCoeffTable == data.m_diffCoeffTable &&
                m_plmixparTable == data.m_plmixparTable &&
                m_plycarrTable == data.m_plycarrTable &&
+               m_plydegrTable == data.m_plydegrTable &&
                m_plymeterTable == data.m_plymeterTable &&
                m_plyvmhTable == data.m_plyvmhTable &&
                m_shrateTable == data.m_shrateTable &&
